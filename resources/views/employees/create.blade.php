@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Student</title>
+    <title>Create Employee</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -12,7 +12,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <h3>Add New Student</h3>
+                        <h3>Add New Employee</h3>
                     </div>
                     <div class="card-body">
                         @if($errors->any())
@@ -25,14 +25,14 @@
                             </div>
                         @endif
 
-                        <form action="{{ route('students.store') }}" method="POST">
+                        <form action="{{ route('employees.store') }}" method="POST">
                             @csrf
 
                             <div class="mb-3">
-                                <label for="student_id" class="form-label">Student ID</label>
-                                <input type="text" class="form-control @error('student_id') is-invalid @enderror" 
-                                       id="student_id" name="student_id" value="{{ old('student_id') }}" required>
-                                @error('student_id')
+                                <label for="employee_id" class="form-label">Employee ID</label>
+                                <input type="text" class="form-control @error('employee_id') is-invalid @enderror" 
+                                       id="employee_id" name="employee_id" value="{{ old('employee_id') }}" required>
+                                @error('employee_id')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -47,13 +47,22 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="course" class="form-label">Course</label>
-                                <select class="form-select @error('course') is-invalid @enderror" 
-                                        id="course" name="course" required>
-                                    <option value="">Select Course</option>
-                                    <option value="BSIS" {{ old('course') == 'BSIS' ? 'selected' : '' }}>BSIS</option>
-                                    <option value="BAB" {{ old('course') == 'BAB' ? 'selected' : '' }}>BAB</option>
-                                    <option value="BSAIS" {{ old('course') == 'BSAIS' ? 'selected' : '' }}>BSAIS</option>
+                                <label for="position" class="form-label">Position</label>
+                                <input type="text" class="form-control @error('position') is-invalid @enderror" 
+                                       id="position" name="position" value="{{ old('position') }}" required>
+                                @error('position')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="salary" class="form-label">Salary</label>
+                                <input type="number" class="form-control @error('salary') is-invalid @enderror" 
+                                       id="salary" name="salary" value="{{ old('salary') }}" step="0.01" required>
+                                @error('salary')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
                                     <option value="BSSW" {{ old('course') == 'BSSW' ? 'selected' : '' }}>BSSW</option>
                                     <option value="BSA" {{ old('course') == 'BSA' ? 'selected' : '' }}>BSA</option>
                                 </select>
@@ -78,8 +87,8 @@
                             </div>
 
                             <div class="d-flex justify-content-between">
-                                <a href="{{ route('students.index') }}" class="btn btn-secondary">Cancel</a>
-                                <button type="submit" class="btn btn-primary">Create Student</button>
+                                <a href="{{ route('employees.index') }}" class="btn btn-secondary">Cancel</a>
+                                <button type="submit" class="btn btn-primary">Create Employee</button>
                             </div>
                         </form>
                     </div>
