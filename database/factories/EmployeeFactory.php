@@ -14,13 +14,16 @@ class EmployeeFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    // database/factories/EmployeeFactory.php
+
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'position' => fake()->jobTitle(),
-            'salary' => fake()->numberBetween(15000, 80000),
+            'employee_id' => 'EMP-' . fake()->unique()->numberBetween(1000, 9999), // Unique employee ID
+            'name'        => fake()->name(),
+            'email'       => fake()->unique()->safeEmail(),
+            'position'    => fake()->jobTitle(),
+            'salary'      => fake()->randomFloat(2, 15000, 70000),
         ];
-}
+    }
 }

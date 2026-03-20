@@ -13,7 +13,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees  = Employee::paginate(10);
+        $employees  = Employee::latest()->paginate(10);
         return view('employees.index', compact('employees'));
     }
 
@@ -33,6 +33,7 @@ class EmployeeController extends Controller
         $request->validate([
             'employee_id' => 'required|unique:employees,employee_id',
             'name' => 'required',
+            'email' => 'required|email|unique:employees,email',
             'position' => 'required',
             'salary' => 'required|numeric|min:0',
         ]);
@@ -67,6 +68,7 @@ class EmployeeController extends Controller
     {
         $request->validate([
             'employee_id' => 'required|unique:employees,employee_id,' . $id,
+            'email' => 'required|email|unique:employees,email,' . $id,
             'name' => 'required',
             'position' => 'required',
             'salary' => 'required|numeric|min:0',
