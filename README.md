@@ -19,7 +19,7 @@ This project is converted from a Student Management System into an Employee Mana
 - **Dropdown Selection**: Standardized positions for data consistency.
 
 ## 📸 Screenshot
-![Employee Management System Dashboard](ss.png)
+![Employee Management System Dashboard](SS.png)
 
 ---
 
